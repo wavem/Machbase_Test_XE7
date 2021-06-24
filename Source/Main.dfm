@@ -2,8 +2,8 @@ object FormMain: TFormMain
   Left = 0
   Top = 0
   Caption = 'MACHBASE TEST'
-  ClientHeight = 545
-  ClientWidth = 852
+  ClientHeight = 841
+  ClientWidth = 1114
   Color = clBtnFace
   DoubleBuffered = True
   Font.Charset = DEFAULT_CHARSET
@@ -13,24 +13,24 @@ object FormMain: TFormMain
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
+  OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
   object ___pnBase: TPanel
     Left = 0
     Top = 0
-    Width = 852
-    Height = 545
+    Width = 1114
+    Height = 841
     Align = alClient
     BevelOuter = bvNone
     Color = clBlack
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 667
-    ExplicitWidth = 545
-    ExplicitHeight = 185
+    ExplicitWidth = 852
+    ExplicitHeight = 545
     object memo: TAdvMemo
       Left = 0
-      Top = 295
+      Top = 591
       Width = 852
       Height = 250
       Cursor = crIBeam
@@ -109,7 +109,7 @@ object FormMain: TFormMain
         '')
       MarkerList.UseDefaultMarkerImageIndex = False
       MarkerList.DefaultMarkerImageIndex = -1
-      MarkerList.ImageTransparentColor = -1
+      MarkerList.ImageTransparentColor = 33554432
       OleDropTarget = []
       PrintOptions.MarginLeft = 0
       PrintOptions.MarginRight = 0
@@ -141,5 +141,79 @@ object FormMain: TFormMain
       Version = '3.4.1.0'
       WordWrap = wwNone
     end
+    object btn_Connect: TButton
+      Left = 208
+      Top = 144
+      Width = 75
+      Height = 25
+      Caption = 'Connection'
+      TabOrder = 1
+      OnClick = btn_ConnectClick
+    end
+    object btn_Check: TButton
+      Left = 289
+      Top = 144
+      Width = 75
+      Height = 25
+      Caption = 'Check'
+      TabOrder = 2
+      OnClick = btn_CheckClick
+    end
+    object btn_Get: TButton
+      Left = 370
+      Top = 144
+      Width = 75
+      Height = 25
+      Caption = 'Get'
+      TabOrder = 3
+      OnClick = btn_GetClick
+    end
+    object DBGrid: TDBGrid
+      Left = 0
+      Top = 304
+      Width = 1114
+      Height = 281
+      DataSource = DataSource
+      Options = [dgEditing, dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+      TabOrder = 4
+      TitleFont.Charset = DEFAULT_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -11
+      TitleFont.Name = 'Tahoma'
+      TitleFont.Style = []
+    end
+  end
+  object FDConnection: TFDConnection
+    Params.Strings = (
+      'User_Name=SYS'
+      'Password=MANAGER'
+      
+        'ODBCAdvanced=SERVER=192.168.0.245;DBNAME=mydb;PORT=5656;NLS_LANG' +
+        '=MS949;CONNECTION_TIMEOUT=5;SOCKET_TIMEOUT=0'
+      'ODBCDriver=MachbaseSDK'
+      'DataSource=MACHBASE_SDK_DSN'
+      'LoginTimeout=10'
+      'Database=RAW_DATA'
+      'DriverID=ODBC')
+    Connected = True
+    Left = 584
+    Top = 40
+  end
+  object FDQuery: TFDQuery
+    Connection = FDConnection
+    SQL.Strings = (
+      'SELECT * from RAW_DATA WHERE FLEET_ID = 2032 limit 1;')
+    Left = 592
+    Top = 96
+  end
+  object FDGUIxWaitCursor: TFDGUIxWaitCursor
+    Provider = 'Forms'
+    Left = 800
+    Top = 40
+  end
+  object DataSource: TDataSource
+    DataSet = FDQuery
+    Left = 592
+    Top = 168
   end
 end

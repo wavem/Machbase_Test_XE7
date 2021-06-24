@@ -54,7 +54,7 @@
         <_TCHARMapping>wchar_t</_TCHARMapping>
         <Multithreaded>true</Multithreaded>
         <ILINK_LibraryPath>Z:\Work\01. MJW\01. Project\04. Test\MachbaseTest\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
-        <AllPackageLibs>rtl.lib;vcl.lib;tmsdXE7.lib;adortl.lib;dbrtl.lib;vclx.lib;xmlrtl.lib;vclactnband.lib;vclimg.lib;vcldb.lib;VclSmp.lib</AllPackageLibs>
+        <AllPackageLibs>rtl.lib;vcl.lib;tmsdXE7.lib;adortl.lib;dbrtl.lib;vclx.lib;xmlrtl.lib;vclactnband.lib;vclimg.lib;vcldb.lib;VclSmp.lib;FireDACCommon.lib;FireDACODBCDriver.lib;FireDACCommonDriver.lib;FireDAC.lib;FireDACSqliteDriver.lib;vclFireDAC.lib</AllPackageLibs>
         <DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>
         <DynamicRTL>true</DynamicRTL>
         <UsePackages>true</UsePackages>
@@ -102,10 +102,11 @@
         <ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\debug\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+        <IncludePath>C:\MachbaseSDK-6.5\machbase_home\include;$(IncludePath)</IncludePath>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <DynamicRTL>false</DynamicRTL>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <LinkPackageStatics>rtl.lib;vcl.lib;tmsdXE7.lib;adortl.lib;dbrtl.lib;vclx.lib;xmlrtl.lib;vclactnband.lib;vclimg.lib;vcldb.lib;VclSmp.lib</LinkPackageStatics>
+        <LinkPackageStatics>rtl.lib;vcl.lib;tmsdXE7.lib;adortl.lib;dbrtl.lib;vclx.lib;xmlrtl.lib;vclactnband.lib;vclimg.lib;vcldb.lib;VclSmp.lib;FireDACCommon.lib;FireDACODBCDriver.lib;FireDACCommonDriver.lib;FireDAC.lib;FireDACSqliteDriver.lib;vclFireDAC.lib</LinkPackageStatics>
         <ILINK_LibraryPath>C:\Users\WAVE_W64\Documents\tmssoftware\TMS Component Pack\DelphiXE7\Win32\Debug\;C:\Users\Public\Documents\Embarcadero\Studio\15.0\DCP\;$(BDS)\lib\win32\release\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <UsePackages>false</UsePackages>
     </PropertyGroup>
@@ -162,12 +163,6 @@
                 </Excluded_Packages>
             </CPlusPlusBuilder.Personality>
             <Deployment>
-                <DeployFile LocalName=".\Win32\Debug\MachbaseTest.tds" Configuration="Debug" Class="DebugSymbols">
-                    <Platform Name="Win32">
-                        <RemoteName>MachbaseTest.tds</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile Condition="'$(UsingDelphiRTL)'=='true'" LocalName="$(BDS)\bin64\borlndmm.dll" Class="DependencyModule">
                     <Platform Name="Win64">
                         <Overwrite>true</Overwrite>
@@ -175,6 +170,12 @@
                 </DeployFile>
                 <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin64\cc64160mt.dll" Class="DependencyModule">
                     <Platform Name="Win64">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName=".\Win32\Debug\MachbaseTest.exe" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>MachbaseTest.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -199,14 +200,14 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin\cc32160.dll" Class="DependencyModule">
+                <DeployFile LocalName=".\Win32\Debug\MachbaseTest.tds" Configuration="Debug" Class="DebugSymbols">
                     <Platform Name="Win32">
+                        <RemoteName>MachbaseTest.tds</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName=".\Win32\Debug\MachbaseTest.exe" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin\cc32160.dll" Class="DependencyModule">
                     <Platform Name="Win32">
-                        <RemoteName>MachbaseTest.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
